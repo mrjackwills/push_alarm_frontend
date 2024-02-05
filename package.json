@@ -1,6 +1,6 @@
 {
   "name": "push_alarm_frontend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "serve": "cross-env NODE_OPTIONS='--no-warnings' vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -42,5 +42,5 @@
     "vite-plugin-vuetify": "^2.0.1",
     "vue-tsc": "^1.8.27"
   },
-  "buildDate": "Sun 04 2024 February 23:05:49 GMT"
+  "buildDate": "Mon 05 2024 February 13:48:22 GMT"
 }
