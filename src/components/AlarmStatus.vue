@@ -55,7 +55,6 @@ import { zeroPad } from '@/vanillaTS/zeropad';
 
 const statusStore = statusModule();
 
-/// Zero pad a number
 const zpad = (x: number): string => {
 	return zeroPad(x);
 };
