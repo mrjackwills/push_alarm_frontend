@@ -11,7 +11,6 @@
 	},
 	"mounts": [
 		"source=/etc/localtime,target=/etc/localtime,type=bind,readonly"
-		// "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=readonly"
 	],
 	// Set *default* container specific settings.json values on container create.
 	// Add the IDs of extensions you want installed when the container is created.
