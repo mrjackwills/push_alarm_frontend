@@ -5,25 +5,23 @@ import LoginView from '@/views/LoginView.vue';
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
+
 	routes: [
 		{
 			path: FrontendRoutes.BASE,
 			name: 'home',
 			component: HomeView,
 			beforeEnter: (_to, _from, next): void => {
-				const user_store = userModule();
-				if (!user_store.authenticated) next(FrontendRoutes.LOGIN);
-				else next();
+				if (userModule().authenticated) next();
+				else next(FrontendRoutes.LOGIN);
 			}
 		},
 		{
 			path: FrontendRoutes.LOGIN,
 			name: 'login',
 			component: LoginView,
-			beforeEnter: (_to, _from, next): void => {
-				const user_store = userModule();
-				const isAuthenticated = user_store.authenticated;
-				if (isAuthenticated) next(FrontendRoutes.BASE);
+			beforeEnter: async (to, from, next): Promise<void>=> {
+				if (userModule().authenticated) 	next(FrontendRoutes.BASE);
 				else next();
 			}
 		},
