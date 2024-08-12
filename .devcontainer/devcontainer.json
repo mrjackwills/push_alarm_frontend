@@ -28,8 +28,6 @@
 				"timonwong.shellcheck",
 				"redhat.vscode-yaml",
 				"vue.volar",
-				"vue.vscode-typescript-vue-plugin",
-				"wix.vscode-import-cost",
 				"yoavbls.pretty-ts-errors"
 			]
 		}
