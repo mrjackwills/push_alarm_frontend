@@ -9,6 +9,7 @@
 
 ### Fixes
 + alarm status display tweak, [e0d5cd02b9cc9d332480a8cccb7989620a889469]
++ computed return type, [a1a33563174a35a862e03d88e4bd52be95bef2b9]
 
 ### Refactors
 + router tweak, [306babef2300727c9ce2de6def4f780481d9047b]
