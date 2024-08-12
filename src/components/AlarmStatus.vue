@@ -64,13 +64,17 @@ const alarm = computed(() => {
 });
 
 const hour = computed(() => {
-	if (alarm.value !== undefined)
+	if (alarm.value !== undefined) {
 		return zeroPad(alarm.value.hour);
+	}
+	return 0;
 });
 
 const minute = computed(() => {
-	if (alarm.value !== undefined)
+	if (alarm.value !== undefined) {
 		return zeroPad(alarm.value.minute);
+	}
+	return 0;
 });
 
 const cache = computed(() => {
