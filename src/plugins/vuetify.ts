@@ -13,7 +13,6 @@ export default createVuetify({
 	},
 	
 	theme: {
-		cspNonce: '4dc4f3756b757c7b64b2340378f05c05035afeb1d5c992dc26646633ed9670e17eafbfc0376a765b',
 		themes: {
 			light: {
 				colors: {

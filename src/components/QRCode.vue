@@ -4,8 +4,27 @@
 		<v-col class='ma-0 pa-0'>
 			<v-row align='center' justify='center' class='ma-0 pa-0'>
 				<v-col cols='auto' v-if='timeout === 0'>
-					<QrCode :value='qrCode' :size='size' level='H' />
+					<v-row justify='center' class='ma-0 pa-0'>
+						<v-col cols='auto' class='ma-0 pa-0'>
+							<QrCode :value='qrCode' :size='size' level='H' />
+						</v-col>
+					</v-row>
+					<v-row justify='center' class='ma-0 pa-0'>
+						<v-col cols='auto' class='ma-0 pa-0' v-if='wsConnected'>
+							<v-btn
+								@click='dismiss'
+								color='secondary'
+								rounded='lg'
+								size='small'
+								variant='elevated'
+							>
+								<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiPower' color='white' />
+								<span class='text-white'>dismiss alarm</span>
+							</v-btn>
+						</v-col>
+					</v-row>
 				</v-col>
+			
 				<v-col cols='auto text-black ltext  ma-0 pa-0' v-else>
 					{{ zeroPadTimeout }}
 				</v-col>
@@ -16,9 +35,12 @@
 
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
+import { mdiPower } from '@mdi/js';
 import { useDocumentVisibility } from '@vueuse/core';
 import { zeroPad } from '@/vanillaTS/zeropad';
 import QrCode from 'qrcode.vue';
+
+const websocketStore = websocketModule();
 
 const visibility = useDocumentVisibility();
 
@@ -45,12 +67,20 @@ const qrCode = computed((): string => {
 });
 
 const size = computed((): number => {
-	return Math.floor(window.innerWidth / 3);
+	return Math.floor(window.innerWidth / 4);
 });
 
 const zeroPadTimeout = computed(() : string => {
 	return zeroPad(timeout.value);
 });
+
+const wsConnected = computed(() => {return websocketStore.connected;});
+
+const dismiss = (): void => {
+	if (wsConnected.value) {
+		websocketStore.send({ name: 'alarm_dismiss' });
+	}
+};
 
 watch(mobile, (i) => {
 	if (i) {

@@ -6,7 +6,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import type { VitePWAOptions } from 'vite-plugin-pwa';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-
 // Utilities
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
@@ -38,7 +37,6 @@ const pwaOptions: Partial<VitePWAOptions> = {
 	},
 };
 
-// https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
 		vue({
@@ -85,5 +83,6 @@ export default defineConfig({
 	},
 	server: {
 		port: 8002,
-	},
+		host: '127.0.0.1'
+	}
 });

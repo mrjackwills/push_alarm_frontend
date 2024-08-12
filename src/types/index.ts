@@ -28,7 +28,7 @@ export type Time = ModelAlarm & { second: number }
 type IncomingNameData<T extends IncomingMessageName, U> = { name: T, data?: U };
 type OutgoingNameData<T extends OutgoingMessageName, U> = { name: T, body?: U };
 
-type OutgoingMessageName = 'status' | 'alarm_add' | 'alarm_delete' | 'alarm_update' | 'test_request' | 'time_zone'
+type OutgoingMessageName = 'status' | 'alarm_add' | 'alarm_delete' |'alarm_dismiss' | 'alarm_update' | 'test_request' | 'time_zone'
 type IncomingMessageName = 'status' | 'error'
 
 export type Status = { [K in 'time_zone' | 'version']: string }
@@ -43,5 +43,6 @@ export type wsOutGoing = OutgoingNameData<'status', undefined> |
 	OutgoingNameData<'alarm_add', ModelAlarm> |
 	OutgoingNameData<'alarm_update', ModelAlarm> |
 	OutgoingNameData<'alarm_delete', undefined> |
+	OutgoingNameData<'alarm_dismiss', undefined> |
 	OutgoingNameData<'test_request', { message: string }> |
 	OutgoingNameData<'time_zone', { zone: string }>;
