@@ -20,8 +20,8 @@ const router = createRouter({
 			path: FrontendRoutes.LOGIN,
 			name: 'login',
 			component: LoginView,
-			beforeEnter: async (to, from, next): Promise<void>=> {
-				if (userModule().authenticated) 	next(FrontendRoutes.BASE);
+			beforeEnter: (to, from, next): void => {
+				if (userModule().authenticated)	next(FrontendRoutes.BASE);
 				else next();
 			}
 		},
