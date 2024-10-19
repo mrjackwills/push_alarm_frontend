@@ -1,10 +1,13 @@
+# <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.2'>v0.2.2</a>
+### 2024-10-19
+
 ### Chores
-+ dependencies updated, [d8cf7bc878bafb5131587aff56863cb90756dbd6]
-+ .devcontainer updated, [4614959978a38179ef40caaeb4d372bf612c4cab]
-+ create_release.sh updated, [f330361b17da8e5343b4f229f1929dcafa9f0d6c]
++ dependencies updated, [d8cf7bc8](https://github.com/mrjackwills/push_alarm_frontend/commit/d8cf7bc878bafb5131587aff56863cb90756dbd6)
++ .devcontainer updated, [46149599](https://github.com/mrjackwills/push_alarm_frontend/commit/4614959978a38179ef40caaeb4d372bf612c4cab)
++ create_release.sh updated, [f330361b](https://github.com/mrjackwills/push_alarm_frontend/commit/f330361b17da8e5343b4f229f1929dcafa9f0d6c)
 
 ### Fixes
-+ vite css fix, [dbe10e1ab1ac65ab8856d2fd209a27b8657bfedc]
++ vite css fix, [dbe10e1a](https://github.com/mrjackwills/push_alarm_frontend/commit/dbe10e1ab1ac65ab8856d2fd209a27b8657bfedc)
 
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.1'>v0.2.1</a>
 ### 2024-09-07
