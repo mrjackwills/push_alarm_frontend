@@ -1,3 +1,6 @@
+### Chores
++ dependencies updated, [bb64466b1f3d0927924c865b8c4f4e6365ef652c]
+
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.2'>v0.2.2</a>
 ### 2024-10-19
 
