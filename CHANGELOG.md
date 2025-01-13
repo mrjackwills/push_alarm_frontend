@@ -1,5 +1,8 @@
+# <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.4'>v0.2.4</a>
+### 2025-01-13
+
 ### Chores
-+ dependencies updated, [5784f5cd010cf06767159283eef148076f72ad8e]
++ dependencies updated, [5784f5cd](https://github.com/mrjackwills/push_alarm_frontend/commit/5784f5cd010cf06767159283eef148076f72ad8e)
 
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.3'>v0.2.3</a>
 ### 2024-11-29
