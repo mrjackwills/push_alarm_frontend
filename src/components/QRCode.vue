@@ -70,11 +70,13 @@ const size = computed((): number => {
 	return Math.floor(window.innerWidth / 4);
 });
 
-const zeroPadTimeout = computed(() : string => {
+const zeroPadTimeout = computed((): string => {
 	return zeroPad(timeout.value);
 });
 
-const wsConnected = computed(() => {return websocketStore.connected;});
+const wsConnected = computed(() => {
+	return websocketStore.connected; 
+});
 
 const dismiss = (): void => {
 	if (wsConnected.value) {
@@ -98,9 +100,7 @@ onMounted(() => {
 	reset_timer();
 });
 
-const props = defineProps<{
-	timeout_limit: number
-}>();
+const props = defineProps<{ timeout_limit: number }>();
 
 </script>
 

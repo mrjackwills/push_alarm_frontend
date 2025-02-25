@@ -63,7 +63,7 @@
 <script setup lang='ts'>
 import { mdiUpdate } from '@mdi/js';
 import { parents, zones } from '@/vanillaTS/timezone';
-import { useDisplay, } from 'vuetify';
+import { useDisplay } from 'vuetify';
 import type { Ref } from 'vue';
 import type { su, ComputedCity } from '@/types';
 
@@ -83,11 +83,14 @@ const computedTimeZone = computed((): string =>{
 const computedCity = computed((): Array<ComputedCity> =>{
 	if (!timeZoneRegion.value) return [];
 	const data = [];
-	for (const i of zones) if (i.startsWith(timeZoneRegion.value)) data.push({ value: i, title: i.substring(timeZoneRegion.value.length + 1).replace('_', ' ') });
+	for (const i of zones) if (i.startsWith(timeZoneRegion.value)) data.push({
+		value: i,
+		title: i.substring(timeZoneRegion.value.length + 1).replace('_', ' ') 
+	});
 	return data;
 });
 const computedTimezoneText = computed((): string =>{
-	return !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value? 'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`;
+	return !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value ? 'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`;
 });
 const confirmFont = computed((): string =>{
 	return mobile.value ? 'text-caption' : 'text-body-1';
@@ -109,7 +112,10 @@ const timezoneTimeout = ref(0);
 const setTimeZone = (): void => {
 	if (!timeZoneCity.value || loading.value) return;
 	[ localLoading.value, loading.value ] = [ true, true ];
-	websocketStore.send({ name: 'time_zone', body: { zone: timeZoneCity.value } });
+	websocketStore.send({
+		name: 'time_zone',
+		body: { zone: timeZoneCity.value } 
+	});
 	emit('close');
 };
 

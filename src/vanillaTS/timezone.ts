@@ -68,7 +68,7 @@ const africaZones = [
 	'Sao_Tome',
 	'Tripoli',
 	'Tunis',
-	'Windhoek',
+	'Windhoek'
 ];
 
 const americaZones = [
@@ -215,7 +215,7 @@ const americaZones = [
 	'Whitehorse',
 	'Winnipeg',
 	'Yakutat',
-	'Yellowknife',
+	'Yellowknife'
 ];
 
 const antarcticaZones = [
@@ -229,7 +229,7 @@ const antarcticaZones = [
 	'Rothera',
 	'Syowa',
 	'Vostok',
-	'Longyearbyen',
+	'Longyearbyen'
 ];
 
 const asiaZones = [
@@ -308,7 +308,7 @@ const asiaZones = [
 	'Vladivostok',
 	'Yakutsk',
 	'Yekaterinburg',
-	'Yerevan',
+	'Yerevan'
 ];
 
 const atlanticZones = [
@@ -321,7 +321,7 @@ const atlanticZones = [
 	'Reykjavik',
 	'South_Georgia',
 	'St_Helena',
-	'Stanley',
+	'Stanley'
 ];
 
 const australiaZones = [
@@ -334,7 +334,7 @@ const australiaZones = [
 	'Lindeman',
 	'Melbourne',
 	'Perth',
-	'Sydney',
+	'Sydney'
 ];
 
 const europeZones = [
@@ -397,7 +397,7 @@ const europeZones = [
 	'Warsaw',
 	'Zagreb',
 	'Zaporozhye',
-	'Zurich',
+	'Zurich'
 ];
 
 const indianZones = [
@@ -411,7 +411,7 @@ const indianZones = [
 	'Maldives',
 	'Mauritius',
 	'Mayotte',
-	'Reunion',
+	'Reunion'
 ];
 
 const pacificZones = [
@@ -445,7 +445,7 @@ const pacificZones = [
 	'Tongatapu',
 	'Truk',
 	'Wake',
-	'Wallis',
+	'Wallis'
 ];
 const _zones = [];
 

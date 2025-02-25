@@ -100,7 +100,7 @@ import { snackError } from '@/services/snack';
 import { ws } from '@/services/WS';
 import type { Time, WsIncoming } from '@/types';
 
-const [ loadingStore, statusStore, websocketStore, ] = [ loadingModule(), statusModule(), websocketModule() ];
+const [ loadingStore, statusStore, websocketStore ] = [ loadingModule(), statusModule(), websocketModule() ];
 
 const pageTitle = '';
 
@@ -172,7 +172,7 @@ const set_time = (): void => {
 	current_time.value = {
 		hour: Number(formattedDate.toString().substring(0, 2)),
 		minute: Number(formattedDate.toString().substring(3, 5)),
-		second: Number(formattedDate.toString().substring(6, 8)),
+		second: Number(formattedDate.toString().substring(6, 8))
 	};
 };
 
@@ -230,16 +230,16 @@ const wsDataHandler = async (message: WsIncoming): Promise<void> => {
 	statusStore.set_cache(!!message.cache);
 	statusStore.toggle_init();
 	switch (message.data?.name) {
-	case 'status': {
-		if (message.data.data) statusStore.set_from_status(message.data.data);
-		init_time_interval();
-		break;
-	}
+		case 'status': {
+			if (message.data.data) statusStore.set_from_status(message.data.data);
+			init_time_interval();
+			break;
+		}
 
-	case 'error': {
-		await snackError({ message: message.data.data });
-		break;
-	}
+		case 'error': {
+			await snackError({ message: message.data.data });
+			break;
+		}
 	}
 };
 

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ModuleName } from '@/types/enum_module';
+import { ModuleName } from '@/types/const_module';
 import type { ModelAlarm, Status } from '@/types';
 
 export const statusModule = defineStore(ModuleName.STATUS, {
@@ -12,7 +12,7 @@ export const statusModule = defineStore(ModuleName.STATUS, {
 		uptime_ws: 0,
 		uptime: 0,
 		version: '',
-		init: false,
+		init: false
 	}),
 
 	actions: {
