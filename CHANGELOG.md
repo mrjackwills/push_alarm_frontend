@@ -1,9 +1,12 @@
+# <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.3.0'>v0.3.0</a>
+### 2025-02-25
+
 ### Chores
-+ create_release updated, [00f35d400fff7032cc55a26c5dc380ef92fe69c3]
-+ dependencies updated, [eff81a1ea54d8dcde4f4727984734cc7effe156a]
++ create_release updated, [00f35d40](https://github.com/mrjackwills/push_alarm_frontend/commit/00f35d400fff7032cc55a26c5dc380ef92fe69c3)
++ dependencies updated, [eff81a1e](https://github.com/mrjackwills/push_alarm_frontend/commit/eff81a1ea54d8dcde4f4727984734cc7effe156a)
 
 ### Features
-+ update to eslint v9, [c528b0846645f50dae4ac6d5bbaaadb6254f2e01]
++ update to eslint v9, [c528b084](https://github.com/mrjackwills/push_alarm_frontend/commit/c528b0846645f50dae4ac6d5bbaaadb6254f2e01)
 
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.2.4'>v0.2.4</a>
 ### 2025-01-13
