@@ -72,21 +72,33 @@ const [ statusStore, websocketStore ] = [ statusModule(), websocketModule() ];
 const emit = defineEmits([ 'close' ]);
 
 const buttonAlarmText = computed((): string => {
-	return statusStore.alarm? 'update' : 'add';
+	return statusStore.alarm ? 'update' : 'add';
 });
 
 const currentAlarm = computed(() => {
 	return statusStore.alarm;
 });
 
-const hours = computed((): Array<{title: string, value: number}> => {
+const hours = computed((): Array<{
+	title: string;
+	value: number; 
+}> => {
 	const hours = [];
-	for (const [ index, _item ] of new Array(24).entries()) hours.push({ title: zeroPad(index), value: index });
+	for (const [ index, _item ] of new Array(24).entries()) hours.push({
+		title: zeroPad(index),
+		value: index 
+	});
 	return hours;
 });
-const minutes = computed((): Array<{title: string, value: number}> => {
+const minutes = computed((): Array<{
+	title: string;
+	value: number; 
+}> => {
 	const minutes = [];
-	for (const [ index, _item ] of new Array(60).entries()) minutes.push({ title: zeroPad(index), value: index });
+	for (const [ index, _item ] of new Array(60).entries()) minutes.push({
+		title: zeroPad(index),
+		value: index 
+	});
 	return minutes;
 });
 
@@ -94,17 +106,26 @@ const chosenHour: Ref<nu> = ref(undefined);
 const chosenMinute: Ref<nu> = ref(undefined);
 
 const disabled = computed((): boolean => {
-	return !(chosenHour.value !== undefined && chosenHour.value >=0 && chosenMinute.value !== undefined && chosenMinute.value >=0);
+	return !(chosenHour.value !== undefined && chosenHour.value >= 0 && chosenMinute.value !== undefined && chosenMinute.value >= 0);
 });
-const addAlarm = () : void => {
+const addAlarm = (): void => {
 	if (chosenHour.value === undefined) return;
 	if (chosenMinute.value === undefined) return;
 	loadingModule().set_loading(true);
-	let body = { hour: chosenHour.value, minute: chosenMinute.value };
+	const body = {
+		hour: chosenHour.value,
+		minute: chosenMinute.value 
+	};
 	if (statusStore.alarm) {
-		websocketStore.send({ name: 'alarm_update', body });
+		websocketStore.send({
+			name: 'alarm_update',
+			body 
+		});
 	} else {
-		websocketStore.send({ name: 'alarm_add', body });
+		websocketStore.send({
+			name: 'alarm_add',
+			body 
+		});
 	}
 	emit('close');
 };

@@ -101,7 +101,5 @@ const backend_version = computed(() => {
 	return statusStore.version;
 });
 
-defineProps<{
-	current_time?: Time
-}>();
+defineProps<{ current_time?: Time }>();
 </script>

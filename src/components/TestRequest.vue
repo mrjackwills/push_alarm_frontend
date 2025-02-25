@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { mdiMessageText, mdiSend } from '@mdi/js';
 
-const [ websocketStore, ] = [ websocketModule() ];
+const [ websocketStore ] = [ websocketModule() ];
 
 const emit = defineEmits([ 'close' ]);
 
@@ -53,7 +53,10 @@ const error = ref('');
 /// Send the test request, if cached then offline
 const send = (): void => {
 	if (!cache.value && message.value.length > 0 && message.value.length <= 100) {
-		websocketStore.send({ name: 'test_request', body: { message: message.value } });
+		websocketStore.send({
+			name: 'test_request',
+			body: { message: message.value } 
+		});
 		emit('close');
 	}
 };
