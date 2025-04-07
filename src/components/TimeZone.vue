@@ -5,51 +5,25 @@
 				<p class='text-center' :class='confirmFont'>{{ computedTimezoneText }}</p>
 			</v-col>
 		</v-row>
-		<v-form
-			v-on:submit.prevent
-			autocomplete='off'
-			method='post'
-		>
+		<v-form v-on:submit.prevent autocomplete='off' method='post'>
 			<v-row align='center' justify='space-around' no-gutters>
-				<v-col cols='5' >
-					<v-select
-						v-model='timeZoneRegion'
-						:items='parents'
-						bg-color='offwhite'
-						color='primary'
-						density='compact'
-						label='Region'
-						variant='outlined'
-					/>
+				<v-col cols='5'>
+					<v-select v-model='timeZoneRegion' :items='parents' bg-color='offwhite' color='primary'
+						density='compact' label='Region' variant='outlined' />
 				</v-col>
-				<v-col cols='5' >
-					<v-select
-						v-model='timeZoneCity'
-						:items='computedCity'
-						bg-color='offwhite'
-						color='primary'
-						density='compact'
-						item-text='text'
-						item-value='value'
-						label='City'
-						no-data-text='Select a region first'
-						variant='outlined'
-					/>
+				<v-col cols='5'>
+					<v-select v-model='timeZoneCity' :items='computedCity' bg-color='offwhite' color='primary'
+						density='compact' item-text='text' item-value='value' label='City'
+						no-data-text='Select a region first' variant='outlined' />
 				</v-col>
 			</v-row>
 			<v-row align='center' justify='space-around' no-gutters>
-				<v-col cols='auto' >
+				<v-col cols='auto'>
 					<v-row justify='center' class=''>
 						<v-col cols='auto' class=''>
-							<v-btn
-								@click='setTimeZone'
-								:disabled='localLoading || !timeZoneCity'
-								variant='elevated'
-								color='secondary'
-								rounded='lg'
-								size='small'
-							>
-								<v-icon  style='vertical-align: middle;' class='mr-1' :icon='mdiUpdate' />
+							<v-btn @click='setTimeZone' :disabled='localLoading || !timeZoneCity' variant='elevated'
+								color='secondary' rounded='lg' size='small'>
+								<v-icon style='vertical-align: middle;' class='mr-1' :icon='mdiUpdate' />
 								<span>update</span>
 							</v-btn>
 						</v-col>
@@ -68,33 +42,27 @@ import type { Ref } from 'vue';
 import type { su, ComputedCity } from '@/types';
 
 const { mobile } = useDisplay();
-const [ loadingStore, websocketStore ] = [ loadingModule(), websocketModule() ];
-const emit = defineEmits([ 'close' ]);
+const [loadingStore, websocketStore] = [loadingModule(), websocketModule()];
+const emit = defineEmits(['close']);
 
 onUnmounted(() => {
 	clearTimeout(timezoneTimeout.value);
-	[ timeZoneRegion.value, timeZoneCity.value ] = [ undefined, undefined ];
+	[timeZoneRegion.value, timeZoneCity.value] = [undefined, undefined];
 });
 
-const computedTimeZone = computed((): string =>{
-	if (!timeZoneCity.value) return '';
-	return new Date().toLocaleString('en-GB', { timeZone: timeZoneCity.value });
-});
-const computedCity = computed((): Array<ComputedCity> =>{
+const computedTimeZone = computed(() => !timeZoneCity.value ? '' : new Date().toLocaleString('en-GB', { timeZone: timeZoneCity.value }));
+const computedCity = computed((): Array<ComputedCity> => {
 	if (!timeZoneRegion.value) return [];
 	const data = [];
 	for (const i of zones) if (i.startsWith(timeZoneRegion.value)) data.push({
 		value: i,
-		title: i.substring(timeZoneRegion.value.length + 1).replace('_', ' ') 
+		title: i.substring(timeZoneRegion.value.length + 1).replace('_', ' ')
 	});
 	return data;
 });
-const computedTimezoneText = computed((): string =>{
-	return !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value ? 'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`;
-});
-const confirmFont = computed((): string =>{
-	return mobile.value ? 'text-caption' : 'text-body-1';
-});
+const computedTimezoneText = computed(() => !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value ? 
+	'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`);
+const confirmFont = computed(() => mobile.value ? 'text-caption' : 'text-body-1');
 const loading = computed({
 	get (): boolean {
 		return loadingStore.loading;
@@ -111,10 +79,10 @@ const timezoneTimeout = ref(0);
 
 const setTimeZone = (): void => {
 	if (!timeZoneCity.value || loading.value) return;
-	[ localLoading.value, loading.value ] = [ true, true ];
+	[localLoading.value, loading.value] = [true, true];
 	websocketStore.send({
 		name: 'time_zone',
-		body: { zone: timeZoneCity.value } 
+		body: { zone: timeZoneCity.value }
 	});
 	emit('close');
 };

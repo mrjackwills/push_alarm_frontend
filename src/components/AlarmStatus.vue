@@ -13,9 +13,10 @@
 					alarm: <span class='font-weight-bold text-error' v-if='alarm'>{{ hour }}:{{ minute }}</span>
 				</v-col>
 				<v-col cols='auto' class='ma-0 pa-0'>
-					current time: <span class='font-weight-bold text-error'>{{ zpad(current_time.hour) }}:{{
-						zpad(current_time.minute)
-					}}:{{ zpad(current_time.second) }}</span> <span class='font-weight-bold text-primary'>{{ time_zone
+					current time: <span class='font-weight-bold text-error'>{{ zeroPad(current_time.hour) }}:{{
+						zeroPad(current_time.minute)
+					}}:{{ zeroPad(current_time.second) }}</span> <span class='font-weight-bold text-primary'>{{
+						time_zone
 					}}</span>
 				</v-col>
 
@@ -55,51 +56,23 @@ import { zeroPad } from '@/vanillaTS/zeropad';
 
 const statusStore = statusModule();
 
-const zpad = (x: number): string => {
-	return zeroPad(x);
-};
+const alarm = computed(() => statusStore.alarm);
 
-const alarm = computed(() => {
-	return statusStore.alarm;
-});
+const hour = computed(() => alarm.value !== undefined ? zeroPad(alarm.value.hour) : 0);
 
-const hour = computed(() => {
-	if (alarm.value !== undefined) {
-		return zeroPad(alarm.value.hour);
-	}
-	return 0;
-});
+const minute = computed(() => alarm.value !== undefined ? zeroPad(alarm.value.minute) : 0);
 
-const minute = computed(() => {
-	if (alarm.value !== undefined) {
-		return zeroPad(alarm.value.minute);
-	}
-	return 0;
-});
+const cache = computed(() => statusStore.cache);
 
-const cache = computed(() => {
-	return statusStore.cache;
-});
+const time_zone = computed(() => statusStore.time_zone);
 
-const time_zone = computed(() => {
-	return statusStore.time_zone;
-});
+const uptime_app = computed(() => secondsToText(statusStore.uptime_app));
 
-const uptime_app = computed(() => {
-	return secondsToText(statusStore.uptime_app);
-});
+const uptime_ws = computed(() => secondsToText(statusStore.uptime_ws));
 
-const uptime_ws = computed(() => {
-	return secondsToText(statusStore.uptime_ws);
-});
+const uptime = computed(() => secondsToText(statusStore.uptime));
 
-const uptime = computed(() => {
-	return secondsToText(statusStore.uptime);
-});
-
-const backend_version = computed(() => {
-	return statusStore.version;
-});
+const backend_version = computed(() => statusStore.version);
 
 defineProps<{ current_time?: Time }>();
 </script>

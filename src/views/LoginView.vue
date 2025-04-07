@@ -90,13 +90,9 @@ watch(showQr, (i) => {
 	browserModule().set_description(title);
 });
 
-const buttonDisabled = computed((): boolean => {
-	return loading.value || password.value.length < 1 || passwordError.value;
-});
+const buttonDisabled = computed(() => loading.value || password.value.length < 1 || passwordError.value);
 
-const buttonVariant = computed((): VBtn['$props']['variant'] => {
-	return buttonDisabled.value ? 'outlined' : 'elevated';
-});
+const buttonVariant = computed((): VBtn['$props']['variant'] => buttonDisabled.value ? 'outlined' : 'elevated');
 
 const loading = computed({
 	get (): boolean {
@@ -111,12 +107,8 @@ const passwordVisible = ref(false);
 const password = ref('');
 const passwordError = ref(false);
 
-const eyeIcon = computed((): string => {
-	return passwordVisible.value ? mdiEyeOff : mdiEye;
-});
-const inputType = computed((): string => {
-	return passwordVisible.value ? 'text' : 'password';
-});
+const eyeIcon = computed(() => passwordVisible.value ? mdiEyeOff : mdiEye);
+const inputType = computed(() => passwordVisible.value ? 'text' : 'password');
 const prependClick = (): void => {
 	if (loading.value) return;
 	passwordVisible.value = !passwordVisible.value;
