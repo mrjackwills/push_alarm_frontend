@@ -62,6 +62,5 @@ export const statusModule = defineStore(ModuleName.STATUS, {
 				this.uptime_ws++;
 			}
 		}
-
 	}
 });

@@ -11,20 +11,15 @@
 					</v-row>
 					<v-row justify='center' class='ma-0 pa-0'>
 						<v-col cols='auto' class='ma-0 pa-0' v-if='wsConnected'>
-							<v-btn
-								@click='dismiss'
-								color='secondary'
-								rounded='lg'
-								size='small'
-								variant='elevated'
-							>
-								<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiPower' color='white' />
+							<v-btn @click='dismiss' color='secondary' rounded='lg' size='small' variant='elevated'>
+								<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiPower'
+									color='white' />
 								<span class='text-white'>dismiss alarm</span>
 							</v-btn>
 						</v-col>
 					</v-row>
 				</v-col>
-			
+
 				<v-col cols='auto text-black ltext  ma-0 pa-0' v-else>
 					{{ zeroPadTimeout }}
 				</v-col>
@@ -62,21 +57,13 @@ const reset_timer = (): void => {
 	}, 1000);
 };
 
-const qrCode = computed((): string => {
-	return `https://alarm.mrjackwills.com`;
-});
+const qrCode = `https://alarm.mrjackwills.com`;
 
-const size = computed((): number => {
-	return Math.floor(window.innerWidth / 4);
-});
+const size = computed(() => Math.floor(window.innerWidth / 4));
 
-const zeroPadTimeout = computed((): string => {
-	return zeroPad(timeout.value);
-});
+const zeroPadTimeout = computed(() => zeroPad(timeout.value));
 
-const wsConnected = computed(() => {
-	return websocketStore.connected; 
-});
+const wsConnected = computed(() => websocketStore.connected);
 
 const dismiss = (): void => {
 	if (wsConnected.value) {
@@ -105,7 +92,7 @@ const props = defineProps<{ timeout_limit: number }>();
 </script>
 
 <style>
-.ltext{
+.ltext {
 	font-size: 12rem;
 }
 </style>

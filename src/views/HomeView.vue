@@ -100,7 +100,7 @@ import { snackError } from '@/services/snack';
 import { ws } from '@/services/WS';
 import type { Time, WsIncoming } from '@/types';
 
-const [ loadingStore, statusStore, websocketStore ] = [ loadingModule(), statusModule(), websocketModule() ];
+const [loadingStore, statusStore, websocketStore] = [loadingModule(), statusModule(), websocketModule()];
 
 const pageTitle = '';
 
@@ -114,9 +114,7 @@ onUnmounted(() => {
 	clearTimeout(time_timeout.value);
 });
 
-const cache = computed(() => {
-	return statusStore.cache;
-});
+const cache = computed(() => statusStore.cache);
 
 /// QR Code methods
 
@@ -125,22 +123,16 @@ const toggleQR = (): void => {
 	showQr.value = !showQr.value;
 };
 
-const qrButton = computed((): string => {
-	return showQr.value ? 'hide' : 'show';
-});
+const qrButton = computed(() => showQr.value ? 'hide' : 'show');
 
 /// Show components
 const showAlarm = ref(false);
 const showTestRequest = ref(false);
 const showTimeZone = ref(false);
 
-const buttonAlarmText = computed((): string => {
-	return statusStore.alarm ? 'update' : 'add';
-});
+const buttonAlarmText = computed(() => statusStore.alarm ? 'update' : 'add');
 
-const init = computed((): boolean => {
-	return statusStore.init;
-});
+const init = computed(() => statusStore.init);
 
 const loading = computed({
 	get (): boolean {
@@ -154,9 +146,7 @@ const loading = computed({
 const current_time = ref(undefined as undefined | Time);
 
 /// Time methods
-const time_zone = computed(() => {
-	return statusStore.time_zone;
-});
+const time_zone = computed(() => statusStore.time_zone);
 const time_timeout = ref(0);
 
 const set_time = (): void => {
@@ -188,9 +178,7 @@ const init_time_interval = (): void => {
 };
 
 /// Web socket methods
-const ws_connected = computed(() => {
-	return websocketStore.connected;
-});
+const ws_connected = computed(() => websocketStore.connected);
 
 /// Request the status of the server
 const send_status = (): void => {
