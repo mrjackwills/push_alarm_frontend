@@ -83,7 +83,7 @@ const toggleQR = (): void => {
 	}
 };
 
-/// Change the title and description when in emergency mode
+// Change the title and description when in emergency mode
 watch(showQr, (i) => {
 	const title = i ? 'emergency mode' : pageTitle;
 	browserModule().set_title(title);

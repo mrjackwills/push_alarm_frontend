@@ -116,7 +116,7 @@ onUnmounted(() => {
 
 const cache = computed(() => statusStore.cache);
 
-/// QR Code methods
+// QR Code methods
 
 const showQr = ref(false);
 const toggleQR = (): void => {
@@ -125,7 +125,7 @@ const toggleQR = (): void => {
 
 const qrButton = computed(() => showQr.value ? 'hide' : 'show');
 
-/// Show components
+// Show components
 const showAlarm = ref(false);
 const showTestRequest = ref(false);
 const showTimeZone = ref(false);
@@ -145,7 +145,7 @@ const loading = computed({
 
 const current_time = ref(undefined as undefined | Time);
 
-/// Time methods
+// Time methods
 const time_zone = computed(() => statusStore.time_zone);
 const time_timeout = ref(0);
 
@@ -166,7 +166,7 @@ const set_time = (): void => {
 	};
 };
 
-/// Update the current_time value every second
+// Update the current_time value every second
 const init_time_interval = (): void => {
 	clearInterval(time_timeout.value);
 	set_time();
@@ -177,10 +177,10 @@ const init_time_interval = (): void => {
 
 };
 
-/// Web socket methods
+// Web socket methods
 const ws_connected = computed(() => websocketStore.connected);
 
-/// Request the status of the server
+// Request the status of the server
 const send_status = (): void => {
 	websocketStore.send({ name: 'status' });
 };

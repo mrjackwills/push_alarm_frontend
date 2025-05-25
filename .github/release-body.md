@@ -1,9 +1,6 @@
-### 2025-04-07
+### 2025-05-25
 
 ### Chores
-+ dependencies updated, [06941f5de683acd440e996ade18752454714dea4]
-
-### Refactors
-+ computed() methods, [79a00b3834edae33bb21c59043dac3682543e1fb]
++ dependencies updated & linting, [a282906ef0606e2e49f7af437c4767e523264828]
 
 see <a href='https://github.com/mrjackwills/push_alarm_frontend/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
