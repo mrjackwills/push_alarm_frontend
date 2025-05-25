@@ -1,3 +1,6 @@
+### Chores
++ dependencies updated & linting, [a282906ef0606e2e49f7af437c4767e523264828]
+
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.3.1'>v0.3.1</a>
 ### 2025-04-07
 
