@@ -60,8 +60,8 @@ const computedCity = computed((): Array<ComputedCity> => {
 	});
 	return data;
 });
-const computedTimezoneText = computed(() => !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value ? 
-	'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`);
+const computedTimezoneText = computed(() => !timeZoneRegion.value ? 'To change time zone, first select a region' : !timeZoneCity.value
+	? 'Now select a city' : `Change to : ${timeZoneCity.value} ${computedTimeZone.value}`);
 const confirmFont = computed(() => mobile.value ? 'text-caption' : 'text-body-1');
 const loading = computed({
 	get (): boolean {

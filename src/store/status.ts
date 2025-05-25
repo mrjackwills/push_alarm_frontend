@@ -40,7 +40,7 @@ export const statusModule = defineStore(ModuleName.STATUS, {
 			this.version = x;
 		},
 
-		/// Set all values
+		// Set all values
 		set_from_status (x: Status) {
 			this.set_alarm(x.alarm);
 			this.set_time_zone(x.time_zone);
@@ -54,7 +54,7 @@ export const statusModule = defineStore(ModuleName.STATUS, {
 			this.init = true;
 		},
 
-		/// Increase the uptimes by one second
+		// Increase the uptimes by one second
 		increase_uptimes () {
 			if (!this.cache) {
 				this.uptime++;

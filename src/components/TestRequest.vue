@@ -31,7 +31,7 @@ const emit = defineEmits(['close']);
 const message = ref('');
 const error = ref('');
 
-/// Send the test request, if cached then offline
+// Send the test request, if cached then offline
 const send = (): void => {
 	if (!cache.value && message.value.length > 0 && message.value.length <= 100) {
 		websocketStore.send({
@@ -45,5 +45,3 @@ const send = (): void => {
 const cache = computed(() => statusModule().cache);
 
 </script>
-
-<style></style>

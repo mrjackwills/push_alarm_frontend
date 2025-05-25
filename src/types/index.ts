@@ -14,7 +14,7 @@ export type Positions = 'bottom' | 'left' | 'right' | 'top';
 
 export type SnackPosition = {
 	x: u<Positions>;
-	y: u<Positions>; 
+	y: u<Positions>;
 };
 
 export type ConvertBytes = {
@@ -24,7 +24,7 @@ export type ConvertBytes = {
 
 export type Error = {
 	message: string;
-	code: number; 
+	code: number;
 };
 
 export type ModelAlarm = Record<'hour' | 'minute', number>;
@@ -33,19 +33,19 @@ export type Time = ModelAlarm & { second: number };
 
 type IncomingNameData<T extends IncomingMessageName, U> = {
 	name: T;
-	data?: U; 
+	data?: U;
 };
 type OutgoingNameData<T extends OutgoingMessageName, U> = {
 	name: T;
-	body?: U; 
+	body?: U;
 };
 
 type OutgoingMessageName = 'status' | 'alarm_add' | 'alarm_delete' | 'alarm_dismiss' | 'alarm_update' | 'test_request' | 'time_zone';
 type IncomingMessageName = 'status' | 'error';
 
 export type Status = Record<'time_zone' | 'version', string>
-	& Record<'uptime' | 'uptime_app' | 'uptime_ws', number>
-	& { alarm: undefined | ModelAlarm };
+  & Record<'uptime' | 'uptime_app' | 'uptime_ws', number>
+  & { alarm: undefined | ModelAlarm };
 
 export type ComputedCity = Record<'value' | 'title', string>;
 
@@ -53,13 +53,13 @@ export type WsIncoming = {
 	data?: IncomingNameData<'status', Status> | IncomingNameData<'error', string>;
 	cache?: boolean;
 	unique?: boolean;
-	error?: Error; 
+	error?: Error;
 };
 
 export type wsOutGoing = OutgoingNameData<'status', undefined> |
-	OutgoingNameData<'alarm_add', ModelAlarm> |
-	OutgoingNameData<'alarm_update', ModelAlarm> |
-	OutgoingNameData<'alarm_delete', undefined> |
-	OutgoingNameData<'alarm_dismiss', undefined> |
-	OutgoingNameData<'test_request', { message: string }> |
-	OutgoingNameData<'time_zone', { zone: string }>;
+  OutgoingNameData<'alarm_add', ModelAlarm> |
+  OutgoingNameData<'alarm_update', ModelAlarm> |
+  OutgoingNameData<'alarm_delete', undefined> |
+  OutgoingNameData<'alarm_dismiss', undefined> |
+  OutgoingNameData<'test_request', { message: string }> |
+  OutgoingNameData<'time_zone', { zone: string }>;
