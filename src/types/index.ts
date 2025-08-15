@@ -43,9 +43,9 @@ type OutgoingNameData<T extends OutgoingMessageName, U> = {
 type OutgoingMessageName = 'status' | 'alarm_add' | 'alarm_delete' | 'alarm_dismiss' | 'alarm_update' | 'test_request' | 'time_zone';
 type IncomingMessageName = 'status' | 'error';
 
-export type Status = Record<'time_zone' | 'version', string>
-  & Record<'uptime' | 'uptime_app' | 'uptime_ws', number>
-  & { alarm: undefined | ModelAlarm };
+export type Status = Record<'time_zone' | 'version', string> &
+  Record<'uptime' | 'uptime_app' | 'uptime_ws', number> &
+  { alarm: undefined | ModelAlarm };
 
 export type ComputedCity = Record<'value' | 'title', string>;
 
