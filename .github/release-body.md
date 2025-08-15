@@ -1,6 +1,6 @@
-### 2025-05-25
+### 2025-08-15
 
 ### Chores
-+ dependencies updated & linting, [a282906ef0606e2e49f7af437c4767e523264828]
++ dependencies updated, [e6626194cac82b63ea3c72910cecfb8fb6e5b337], [7da5ec31241bbcd6953095c8c010a89e8c47e627]
 
 see <a href='https://github.com/mrjackwills/push_alarm_frontend/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
