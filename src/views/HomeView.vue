@@ -4,7 +4,7 @@
 		<v-row justify='center'>
 			<v-col cols='12' md='6' v-if='init' class='abc'>
 
-				<AlarmStatus :current_time='current_time' />
+				<AlarmStatus :current_time />
 
 				<template v-if='!cache'>
 					<v-row justify='center' class=''>

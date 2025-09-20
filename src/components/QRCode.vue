@@ -6,7 +6,7 @@
 				<v-col cols='auto' v-if='timeout === 0'>
 					<v-row justify='center' class='ma-0 pa-0'>
 						<v-col cols='auto' class='ma-0 pa-0'>
-							<QrCode :value='qrCode' :size='size' level='H' />
+							<QrCode :value='qrCode' :size level='H' />
 						</v-col>
 					</v-row>
 					<v-row justify='center' class='ma-0 pa-0'>

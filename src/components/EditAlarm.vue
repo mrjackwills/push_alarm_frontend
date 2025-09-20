@@ -25,7 +25,7 @@
 			</v-col>
 
 			<v-col cols='auto'>
-				<v-btn @click='addAlarm' :disabled='disabled' color='secondary' rounded='lg' size='small'
+				<v-btn @click='addAlarm' :disabled color='secondary' rounded='lg' size='small'
 					variant='elevated'>
 					<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiAlarmPlus'
 						color='white' />
