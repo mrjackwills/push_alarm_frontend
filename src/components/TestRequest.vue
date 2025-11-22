@@ -1,18 +1,37 @@
 <template>
-	<v-col cols='12' class=''>
-		<v-row align='center' justify='center' class='ma-0 pa-0'>
-			<v-col cols='12' class='ma-0 pa-0 mb-n6'>
-				<v-text-field v-model='message' @keydown.enter='send' :error='error.length > 0' :disabled='cache'
-					:prepend-inner-icon='mdiMessageText' bg-color='offwhite' class='ma-0 pa-0' density='compact'
-					label='message to send' maxlength='100' variant='outlined' clearable counter persistent-hint />
+	<v-col class='' cols='12'>
+		<v-row align='center' class='ma-0 pa-0' justify='center'>
+			<v-col class='ma-0 pa-0 mb-n6' cols='12'>
+				<v-text-field
+					v-model='message'
+					bg-color='offwhite'
+					class='ma-0 pa-0'
+					clearable
+					counter
+					density='compact'
+					:disabled='cache'
+					:error='error.length > 0'
+					label='message to send'
+					maxlength='100'
+					persistent-hint
+					:prepend-inner-icon='mdiMessageText'
+					variant='outlined'
+					@keydown.enter='send'
+				/>
 			</v-col>
 		</v-row>
 
-		<v-row align='center' justify='center' class='ma-0 pa-0'>
+		<v-row align='center' class='ma-0 pa-0' justify='center'>
 			<v-col cols='auto'>
-				<v-btn @click='send' :disabled='cache || !message || message.length === 0 || message.length > 100'
-					color='error' rounded='lg' size='small' variant='elevated'>
-					<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiSend' />
+				<v-btn
+					color='error'
+					:disabled='cache || !message || message.length === 0 || message.length > 100'
+					rounded='lg'
+					size='small'
+					variant='elevated'
+					@click='send'
+				>
+					<v-icon class='mr-2' :icon='mdiSend' size='small' style='vertical-align: middle;' />
 					Send message
 				</v-btn>
 			</v-col>
@@ -22,26 +41,26 @@
 </template>
 
 <script setup lang="ts">
-import { mdiMessageText, mdiSend } from '@mdi/js';
+import { mdiMessageText, mdiSend } from '@mdi/js'
 
-const [websocketStore] = [websocketModule()];
+const [websocketStore] = [websocketModule()]
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close'])
 
-const message = ref('');
-const error = ref('');
+const message = ref('')
+const error = ref('')
 
 // Send the test request, if cached then offline
-const send = (): void => {
+function send (): void {
 	if (!cache.value && message.value.length > 0 && message.value.length <= 100) {
 		websocketStore.send({
 			name: 'test_request',
-			body: { message: message.value }
-		});
-		emit('close');
+			body: { message: message.value },
+		})
+		emit('close')
 	}
-};
+}
 
-const cache = computed(() => statusModule().cache);
+const cache = computed(() => statusModule().cache)
 
 </script>

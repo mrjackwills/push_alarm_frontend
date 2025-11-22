@@ -1,13 +1,13 @@
-import '../sass/variables.scss';
-import 'vuetify/styles';
-import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
-import { createVuetify } from 'vuetify';
+import { createVuetify } from 'vuetify'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import '../sass/variables.scss'
+import 'vuetify/styles'
 
 export default createVuetify({
 	icons: {
 		defaultSet: 'mdi',
 		aliases,
-		sets: { mdi }
+		sets: { mdi },
 	},
 
 	theme: {
@@ -17,9 +17,9 @@ export default createVuetify({
 					primary: '#4f00cf',
 					offwhite: '#dedede',
 					error: '#ff006c',
-					secondary: '#ff7245'
-				}
-			}
-		}
-	}
-});
+					secondary: '#ff7245',
+				},
+			},
+		},
+	},
+})

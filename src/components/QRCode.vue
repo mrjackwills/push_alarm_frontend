@@ -1,26 +1,37 @@
 <template>
-	<v-row align='center' justify='center' no-gutters class='ma-0 pa-0'>
+	<v-row align='center' class='ma-0 pa-0' justify='center' no-gutters>
 
 		<v-col class='ma-0 pa-0'>
-			<v-row align='center' justify='center' class='ma-0 pa-0'>
-				<v-col cols='auto' v-if='timeout === 0'>
-					<v-row justify='center' class='ma-0 pa-0'>
-						<v-col cols='auto' class='ma-0 pa-0'>
-							<QrCode :value='qrCode' :size level='H' />
+			<v-row align='center' class='ma-0 pa-0' justify='center'>
+				<v-col v-if='timeout === 0' cols='auto'>
+					<v-row class='ma-0 pa-0' justify='center'>
+						<v-col class='ma-0 pa-0' cols='auto'>
+							<QrCode level='H' :size :value='qrCode' />
 						</v-col>
 					</v-row>
-					<v-row justify='center' class='ma-0 pa-0'>
-						<v-col cols='auto' class='ma-0 pa-0' v-if='wsConnected'>
-							<v-btn @click='dismiss' color='secondary' rounded='lg' size='small' variant='elevated'>
-								<v-icon style='vertical-align: middle;' class='mr-2' size='small' :icon='mdiPower'
-									color='white' />
+					<v-row class='ma-0 pa-0' justify='center'>
+						<v-col v-if='wsConnected' class='ma-0 pa-0' cols='auto'>
+							<v-btn
+								color='secondary'
+								rounded='lg'
+								size='small'
+								variant='elevated'
+								@click='dismiss'
+							>
+								<v-icon
+									class='mr-2'
+									color='white'
+									:icon='mdiPower'
+									size='small'
+									style='vertical-align: middle;'
+								/>
 								<span class='text-white'>dismiss alarm</span>
 							</v-btn>
 						</v-col>
 					</v-row>
 				</v-col>
 
-				<v-col cols='auto text-black ltext  ma-0 pa-0' v-else>
+				<v-col v-else cols='auto text-black ltext  ma-0 pa-0'>
 					{{ zeroPadTimeout }}
 				</v-col>
 			</v-row>
@@ -29,65 +40,64 @@
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify';
-import { mdiPower } from '@mdi/js';
-import { useDocumentVisibility } from '@vueuse/core';
-import { zeroPad } from '@/vanillaTS/zeropad';
-import QrCode from 'qrcode.vue';
+import { mdiPower } from '@mdi/js'
+import { useDocumentVisibility } from '@vueuse/core'
+import QrCode from 'qrcode.vue'
+import { useDisplay } from 'vuetify'
+import { zeroPad } from '@/vanillaTS/zeropad'
 
-const websocketStore = websocketModule();
+const websocketStore = websocketModule()
 
-const visibility = useDocumentVisibility();
+const visibility = useDocumentVisibility()
 
-const { mobile } = useDisplay();
+const { mobile } = useDisplay()
 
-const interval = ref(0);
-const timeout = ref(-1);
+const interval = ref(0)
+const timeout = ref(-1)
 
-const reset_timer = (): void => {
-	timeout.value = props.timeout_limit;
-	clearInterval(interval.value);
+function reset_timer (): void {
+	timeout.value = props.timeoutLimit
+	clearInterval(interval.value)
 	interval.value = window.setInterval(() => {
 		if (timeout.value <= 0) {
-			clearInterval(interval.value);
-
+			clearInterval(interval.value)
 		} else {
-			timeout.value -= 1;
+			timeout.value -= 1
 		}
-	}, 1000);
-};
+	}, 1000)
+}
 
-const qrCode = `https://alarm.mrjackwills.com`;
+const qrCode = `https://alarm.mrjackwills.com`
 
-const size = computed(() => Math.floor(window.innerWidth / 4));
+const size = computed(() => Math.floor(window.innerWidth / 4))
 
-const zeroPadTimeout = computed(() => zeroPad(timeout.value));
+const zeroPadTimeout = computed(() => zeroPad(timeout.value))
 
-const wsConnected = computed(() => websocketStore.connected);
+const wsConnected = computed(() => websocketStore.connected)
 
-const dismiss = (): void => {
+function dismiss (): void {
 	if (wsConnected.value) {
-		websocketStore.send({ name: 'alarm_dismiss' });
+		websocketStore.send({ name: 'alarm_dismiss' })
 	}
-};
+}
 
-watch(mobile, (i) => {
+watch(mobile, i => {
 	if (i) {
-		reset_timer();
+		reset_timer()
 	}
-});
+})
 
 watch(visibility, (current, previous) => {
 	if (current === 'visible' && previous === 'hidden') {
-		reset_timer();
+		reset_timer()
 	}
-});
+})
 
 onMounted(() => {
-	reset_timer();
-});
+	reset_timer()
+})
 
-const props = defineProps<{ timeout_limit: number }>();
+const props = defineProps<{ timeoutLimit: number }>()
 
 </script>
 

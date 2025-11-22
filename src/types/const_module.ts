@@ -5,7 +5,5 @@ export const ModuleName = {
 	SNACKBAR: 'snackbar',
 	STATUS: 'status',
 	USER: 'user',
-	WEBSOCKET: 'websocket'
-} as const;
-
-export type ModuleName = (typeof ModuleName)[keyof typeof ModuleName];
+	WEBSOCKET: 'websocket',
+} as const

@@ -1,35 +1,18 @@
-/* eslint-disable @stylistic/object-curly-newline */
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-import { createApp } from 'vue';
-import { createHead } from '@vueuse/head';
-import { createPinia } from 'pinia';
-import { markRaw } from 'vue';
-import App from './App.vue';
-import router from './router';
-import type { Router } from 'vue-router';
-import vuetify from './plugins/vuetify';
+import { createHead } from '@vueuse/head'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
+import router from './router'
 
-const head = createHead();
-const app = createApp(App);
+const head = createHead()
+const app = createApp(App)
 
-declare module 'pinia' {
-	export interface Pinia {
-		router: () => Router;
-	}
-	export interface PiniaCustomProperties {
-		router: Router;
-	}
-}
+const pinia = createPinia()
 
-const pinia = createPinia();
-pinia.use(({ store }) => {
-	store.router = markRaw(router);
-});
-pinia.router = (): Router => router;
-
-app.
-	use(head).
-	use(router).
-	use(pinia).
-	use(vuetify).
-	mount('#push_alarm_app');
+app
+	.use(head)
+	.use(router)
+	.use(pinia)
+	.use(vuetify)
+	.mount('#push_alarm_app')

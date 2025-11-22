@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
-import { ModuleName } from '@/types/const_module';
-import type { ModelAlarm, Status } from '@/types';
+import type { ModelAlarm, Status } from '@/types'
+import { defineStore } from 'pinia'
+import { ModuleName } from '@/types/const_module'
 
 export const statusModule = defineStore(ModuleName.STATUS, {
 
@@ -12,55 +12,55 @@ export const statusModule = defineStore(ModuleName.STATUS, {
 		uptime_ws: 0,
 		uptime: 0,
 		version: '',
-		init: false
+		init: false,
 	}),
 
 	actions: {
 		set_alarm (x: undefined | ModelAlarm) {
-			this.alarm = x;
+			this.alarm = x
 		},
 
 		set_cache (x: boolean) {
-			this.cache = x;
+			this.cache = x
 		},
 
 		set_time_zone (x: string) {
-			this.time_zone = x;
+			this.time_zone = x
 		},
 		set_uptime (x: number) {
-			this.uptime = x;
+			this.uptime = x
 		},
 		set_uptime_app (x: number) {
-			this.uptime_app = x;
+			this.uptime_app = x
 		},
 		set_uptime_ws (x: number) {
-			this.uptime_ws = x;
+			this.uptime_ws = x
 		},
 		set_version (x: string) {
-			this.version = x;
+			this.version = x
 		},
 
 		// Set all values
 		set_from_status (x: Status) {
-			this.set_alarm(x.alarm);
-			this.set_time_zone(x.time_zone);
-			this.set_uptime(x.uptime);
-			this.set_uptime_app(x.uptime_app);
-			this.set_uptime_ws(x.uptime_ws);
-			this.set_version(x.version);
+			this.set_alarm(x.alarm)
+			this.set_time_zone(x.time_zone)
+			this.set_uptime(x.uptime)
+			this.set_uptime_app(x.uptime_app)
+			this.set_uptime_ws(x.uptime_ws)
+			this.set_version(x.version)
 		},
 
 		toggle_init () {
-			this.init = true;
+			this.init = true
 		},
 
 		// Increase the uptimes by one second
 		increase_uptimes () {
 			if (!this.cache) {
-				this.uptime++;
-				this.uptime_app++;
-				this.uptime_ws++;
+				this.uptime++
+				this.uptime_app++
+				this.uptime_ws++
 			}
-		}
-	}
-});
+		},
+	},
+})
