@@ -1,3 +1,6 @@
+### Chores
++ linting, [aacd428b030c993aa914e106dab2f42a53e1af9a]
+
 # <a href='https://github.com/mrjackwills/push_alarm_frontend/releases/tag/v0.3.4'>v0.3.4</a>
 ### 2025-09-25
 
