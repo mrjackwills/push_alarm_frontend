@@ -62,7 +62,7 @@ export default defineNuxtConfig({
 	nitro: {
 
 		hooks: {
-			'prerender:generate'(route) {
+			'prerender:generate' (route) {
 				const routesToSkip = ['/200.html']
 				if (routesToSkip.includes(route.route)) {
 					route.skip = true
@@ -100,23 +100,23 @@ export default defineNuxtConfig({
 				},
 			],
 			categories: [
-				"productivity",
-				"utilities"
+				'productivity',
+				'utilities',
 			],
 			screenshots: [
 				{
 					src: 'img/screenshots/narrow_01.png',
 					type: 'image/png',
 					sizes: '462x1000',
-					form_factor: 'narrow'
+					form_factor: 'narrow',
 				},
 				{
 					src: 'img/screenshots/wide_01.png',
 					type: 'image/png',
 					sizes: '1000x561',
-					form_factor: 'wide'
-				}
-			]
+					form_factor: 'wide',
+				},
+			],
 
 		},
 		injectManifest: {
