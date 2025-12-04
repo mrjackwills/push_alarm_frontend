@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 dist
-
+.output
+.nuxt
 
 # local env files
 .env.local
@@ -23,3 +24,10 @@ yarn-error.log*
 *.sw*
 
 !./github/logo.svg
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

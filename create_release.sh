@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Vue release
-# v0.3.0
-# 2024-10-19
+# Nuxt release
+# v0.1.0
+# 2025-12-03
 
 PACKAGE_NAME='push_alarm_frontend'
 
@@ -193,7 +193,7 @@ linter() {
 }
 
 npm_build() {
-	npm run build
+	npm run prerender
 	ask_continue
 }
 
@@ -269,7 +269,7 @@ release_flow() {
 	release_continue "git branch -d \"$RELEASE_BRANCH\""
 	git branch -d "$RELEASE_BRANCH"
 
-	npm run build
+	npm_build
 }
 
 main() {

@@ -1,0 +1,11 @@
+html,
+body,
+#app_back {
+	background-color: #cfcfcf!important;
+	margin: 0;
+	height: 100%;
+}
+
+#app-back {
+	height: calc(var(--vh) * 100);
+}
