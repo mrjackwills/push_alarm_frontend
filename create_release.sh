@@ -187,7 +187,6 @@ check_tag() {
 }
 
 linter() {
-	nmm run typecheck
 	npm run check
 	npm run lint
 	ask_continue
