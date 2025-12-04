@@ -164,7 +164,7 @@ function set_time (): void {
 
 // Update the current_time value every second
 function init_time_interval (): void {
-	// Client onlt
+	// Client only
 	clearInterval(time_timeout.value)
 	set_time()
 	time_timeout.value = window.setInterval(() => {

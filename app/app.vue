@@ -43,7 +43,7 @@ function setVhUnit () {
 	document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px')
 }
 
-/// Probbaly overkill
+/// Probably overkill
 function remove_firefox_css () {
 	include_firefox_css.value = false
 	const styleTags = document.head.querySelectorAll('style')
